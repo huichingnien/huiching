@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#092f43"><meta name="description" content="和阿青、白狗穿越福興田園與海岸，閃避障礙、收集在地好物的像素跑酷遊戲。"><title>阿青跑福興｜田園海岸跑酷</title><link rel="stylesheet" href="game.css"></head>
+<body>
+<main class="game-shell" id="shell" aria-label="阿青跑福興遊戲">
+ <div id="stage" tabindex="0" aria-label="遊戲畫面：方向鍵左右換道，上跳躍，下滑行"></div>
+ <header class="topbar"><a class="home" href="index.html" aria-label="返回雲端競選總部">← 總部</a><span class="brand">阿青跑福興 <small>FUXING RUN</small></span><button id="sound" aria-label="開啟音效" aria-pressed="false">音效 關</button><button id="pause" aria-label="暫停遊戲" disabled>Ⅱ</button></header>
+ <div class="hud" aria-label="遊戲分數"><div><small>總分</small><strong id="score">0</strong></div><div><small>奔跑距離</small><strong><span id="distance">0</span><em> m</em></strong></div><div class="life-block"><small>碰撞機會</small><strong id="lives" aria-label="剩餘 3 次">♥ ♥ ♥</strong></div></div>
+ <div class="toast" id="toast" role="status" aria-live="polite"></div>
+ <div class="controls" aria-label="遊戲操作"><button data-action="left" aria-label="向左換道">◀<small>向左</small></button><button data-action="jump" aria-label="跳躍">↑<small>跳躍</small></button><button data-action="slide" aria-label="滑行">↓<small>滑行</small></button><button data-action="right" aria-label="向右換道">▶<small>向右</small></button></div>
+ <section class="veil" id="menu" role="dialog" aria-modal="true" aria-labelledby="menu-title"><div class="menu-card">
+ <span class="eyebrow">田園 × 濕地 × 海岸</span><h1 id="menu-title">阿青<span>跑福興</span></h1><p class="subtitle" id="subtitle">帶著白狗，跑一趟我們的家鄉。</p>
+ <div class="menu-characters" aria-hidden="true"><span class="hero-preview"></span><span class="dog-preview"></span></div>
+ <div class="result" id="result" hidden></div>
+ <div id="instructions"><div class="howto"><span>← →<b>左右閃避</b></span><span>↑ / 空白鍵<b>跳過路障</b></span><span>↓<b>滑過高架牌</b></span></div><p class="mobile-tip">手機可滑動螢幕，或使用下方按鈕</p><div class="rewards"><span>♥ 愛心 +5</span><span>牛奶 +8</span><span>稻穗 +3</span><span>蚵仔 +6</span></div></div>
+ <button class="primary" id="start" disabled>素材載入中…</button><button class="secondary" id="restart" hidden>重新開始</button><p class="best">個人最佳 <b id="record">0</b> 分</p><p class="load-error" id="load-error" role="alert" hidden>素材載入失敗，請重新整理再試一次。</p>
+ </div></section>
+ <noscript>請開啟 JavaScript 以遊玩阿青跑福興。</noscript>
+</main>
+<script src="phaser-3.90.min.js"></script><script src="runner-core.js"></script><script src="game.js"></script>
+</body></html>
