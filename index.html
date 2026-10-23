@@ -37,7 +37,7 @@ matchMedia('(max-width:760px)').addEventListener('change',()=>setMenu(false));
 
 const talkBox=document.getElementById('scene-talk'),talkVisual=document.getElementById('talk-visual'),talkStatus=document.getElementById('talk-status');
 let talkTimer=0,talkTarget=null;const talkCounts={person:0,dog:0};
-const talkLines={person:['歡迎來到阿青的雲端競選總部！','大家好！我是阿青，一起努力！','點選下方選單，看看福興的大小事！','謝謝你來找阿青！♥'],dog:['汪汪！很高興見到你！','摸摸頭～尾巴搖不停！♥','汪！我跳給你看！','謝謝你陪我玩！🐾']};
+const talkLines={person:['歡迎來到阿青的雲端競選總部！','大家好！我是阿青，一起努力！','點選下方選單，看看更多阿青的資訊！','謝謝你來找阿青！♥'],dog:['汪汪！很高興見到你！','摸摸頭～尾巴搖不停！♥','汪！我跳給你看！','謝謝你陪我玩！🐾']};
 function hideTalk(restore=false){clearInterval(talkTimer);talkBox.hidden=true;talkStatus.textContent='';document.querySelectorAll('.scene-talk-trigger').forEach(el=>el.setAttribute('aria-expanded','false'));if(restore)talkTarget?.focus()}
 function showTalk(kind){clearInterval(talkTimer);talkTarget=document.getElementById('talk-'+kind);document.querySelectorAll('.scene-talk-trigger').forEach(el=>el.setAttribute('aria-expanded',String(el===talkTarget)));const text=talkLines[kind][talkCounts[kind]++%talkLines[kind].length];talkBox.dataset.speaker=kind;talkBox.hidden=false;talkStatus.textContent=text;talkVisual.textContent='';if(matchMedia('(prefers-reduced-motion:reduce)').matches){talkVisual.textContent=text;return}const chars=Array.from(text);let i=0;talkTimer=setInterval(()=>{talkVisual.textContent=chars.slice(0,++i).join('');if(i===chars.length)clearInterval(talkTimer)},42)}
 document.getElementById('talk-person').addEventListener('click',()=>showTalk('person'));
