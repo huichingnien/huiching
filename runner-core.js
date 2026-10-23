@@ -2,6 +2,11 @@
 (function(root){
 'use strict';
 const VALUES={heart:5,milk:8,rice:3,oyster:6};
+const TRACK={
+ // Calibrated to the supplied road: horizon y=230, player feet y=720.
+ // Lane centres sit between the painted dividers and the outer road edges.
+ project(lane,z=0){const scale=Math.min(1.25,18/(18+Math.max(-3.6,z)));return {x:270+(lane-1)*204*scale,y:230+490*scale,scale}}
+};
 class Runner{
  constructor(random=Math.random){this.random=random;this.reset();this.mode='ready'}
  reset(){this.mode='running';this.time=0;this.distance=0;this.bonus=0;this.lives=3;this.lane=1;this.x=1;this.jump=0;this.slide=0;this.invulnerable=0;this.spawnClock=1.5;this.items=[];this.events=[];this.nextId=0;this.wave=0;this.add('milk',1,42);this.add('rice',1,53);this.add('barrier',0,105)}
@@ -17,5 +22,6 @@ class Runner{
  snapshot(){return {mode:this.mode,distance:Math.floor(this.distance),score:this.score,bonus:this.bonus,lives:this.lives,lane:this.lane,x:this.x,jump:this.jump,slide:this.slide,items:this.items.map(o=>({...o}))}}
 }
 root.AqingRunner=Runner;
-if(typeof module!=='undefined')module.exports={Runner,VALUES};
+root.AqingTrack=TRACK;
+if(typeof module!=='undefined')module.exports={Runner,VALUES,TRACK};
 })(typeof window==='undefined'?globalThis:window);
